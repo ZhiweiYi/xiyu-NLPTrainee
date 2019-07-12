@@ -1,0 +1,23 @@
+class Solution:
+    def ZTransform(self, s, nRows):
+        if nRows == 1 or len(s) == 0:
+            return s
+        result = ''
+        length = len(s)
+        size = 2 * nRows - 2
+        for i in range(nRows):
+            for j in range(0, length, size):
+                if i+j >= length:
+                    break
+                result += s[i + j]
+                print('**', i + j)
+                if (i != 0 and i != nRows - 1 and j + size - i < length):
+                    result += s[j + size - i]
+                    print(j,'--',j + size - i)
+
+        return result
+
+
+if __name__ == '__main__':
+    s = Solution()
+    print(s.ZTransform('LEETCODEISHIRING', 4))
